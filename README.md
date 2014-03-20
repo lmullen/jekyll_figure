@@ -1,4 +1,4 @@
-# jekyll_figure
+# Jekyll Figure
 
 Adds a Liquid `figure` tag to a [Jekyll][] site
 
