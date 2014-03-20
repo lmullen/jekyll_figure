@@ -19,7 +19,8 @@ module Jekyll
 
     def initialize(tag_name, text, tokens)
       super
-      @text = text.shellsplit
+      @text     = text.shellsplit
+      @@fig_num = 0
     end
 
     def render(context)
@@ -42,7 +43,9 @@ module Jekyll
         d.join(" ")[0..-2]
       }
 
-      "<figure>"                                                         +
+      @@fig_num += 1
+
+      "<figure id='figure-#{@@fig_num}'>"                                +
       "<a href='#{img_src}'><img src='#{img_src}' alt='#{caption}'></a>" +
       "<figcaption>"                                                     +
       "#{caption} (#{downloads.call})"                                   +
