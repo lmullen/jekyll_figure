@@ -24,11 +24,21 @@ module Jekyll
     end
 
     def render(context)
+      @@fig_num += 1
+
       # If the figures directory is not defined, set dir to site root
       if defined? context.registers[:site].config["figures"]["dir"] 
         dir = context.registers[:site].config["figures"]["dir"]
       else
         dir = ""
+      end
+
+      # Should we explicitly enumerate the figures?
+      enumeration = ""
+      if defined? context.registers[:site].config["figures"]["enumerate"]
+        if context.registers[:site].config["figures"]["enumerate"]
+          enumeration = "Figure #{@@fig_num}: "
+        end
       end
 
       filename   = @text[0]
@@ -43,11 +53,10 @@ module Jekyll
         d.join(" ")[0..-2]
       }
 
-      @@fig_num += 1
 
       "<figure id='figure-#{@@fig_num}'>"                                +
       "<a href='#{img_src}'><img src='#{img_src}' alt='#{caption}'></a>" +
-      "<figcaption>"                                                     +
+      "<figcaption>#{enumeration}"                                       +
       "#{caption} (#{downloads.call})"                                   +
       "</figcaption>"                                                    +
       "</figure>"
