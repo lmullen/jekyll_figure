@@ -57,7 +57,7 @@ module Jekyll
       "<figure id='figure-#{@@fig_num}'>"                                +
       "<a href='#{img_src}'><img src='#{img_src}' alt='#{caption}'></a>" +
       "<figcaption>#{enumeration}"                                       +
-      "#{caption} (#{downloads.call})"                                   +
+      "#{caption} [#{downloads.call}]"                                   +
       "</figcaption>"                                                    +
       "</figure>"
 
