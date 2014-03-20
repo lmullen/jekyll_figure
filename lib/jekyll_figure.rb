@@ -33,6 +33,7 @@ module Jekyll
       filename   = @text[0]
       extensions = @text[1].split(",")
       caption    = @text[2]
+      img_src    = "#{dir}/#{filename}.#{extensions.first}"
       downloads  = proc {
         d = []
         extensions.each do |ext|
@@ -41,11 +42,11 @@ module Jekyll
         d.join(" ")[0..-2]
       }
 
-      "<figure>"                                                            +
-      "<img src='#{dir}/#{filename}.#{extensions.first}' alt='#{caption}'>" +
-      "<figcaption>"                                                        +
-      "#{caption} (#{downloads.call})"                                      +
-      "</figcaption>"                                                       +
+      "<figure>"                                                         +
+      "<a href='#{img_src}'><img src='#{img_src}' alt='#{caption}'></a>" +
+      "<figcaption>"                                                     +
+      "#{caption} (#{downloads.call})"                                   +
+      "</figcaption>"                                                    +
       "</figure>"
 
     end
