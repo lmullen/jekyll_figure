@@ -41,12 +41,12 @@ module Jekyll
         d.join(" ")[0..-2]
       }
 
-        "<figure>"                                             +
-        "<img src='#{dir}/#{filename}.#{extensions.first}'>"   +
-        "<figcaption>"                                         +
-        "#{caption} (#{downloads.call})"                       +
-        "</figcaption>"                                        +
-        "</figure>"
+      "<figure>"                                                            +
+      "<img src='#{dir}/#{filename}.#{extensions.first}' alt='#{caption}'>" +
+      "<figcaption>"                                                        +
+      "#{caption} (#{downloads.call})"                                      +
+      "</figcaption>"                                                       +
+      "</figure>"
 
     end
 
