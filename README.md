@@ -24,9 +24,15 @@ If you have a directory where you keep your figures, add these lines to
     figures:
       dir: /figures
 
+If you would like the figures to be enumerated (e.g., "Figure 1," "Figure 
+2") then add this value to `_config.yml`:
+
+    figures:
+      enumerate: true
+
 ## Usage
 
-Creates a Liquid figure tag. The figure tag should take this form:
+To add a figure, use the figure tag in this form:
 
     {% figure filename svg,png,pdf 'Your caption here' %}
 
@@ -38,9 +44,13 @@ extensions. It will include a caption with links to all the figure
 formats. If the figures directory is set in `_config.yml`, then the
 image and the links will point there.
 
+You can [see an example here][].
+
+
 ## License
 
 MIT License <http://lmullen.mit-license.org/>
 
   [Jekyll]: http://jekyllrb.com/
+  [see an example here]: http://lincolnmullen.com/blog/a-figure-plugin-for-jekyll/
 
