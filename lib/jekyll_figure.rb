@@ -45,17 +45,27 @@ module Jekyll
       extensions = @text[1].split(",")
       caption    = @text[2]
       img_src    = "#{dir}/#{filename}.#{extensions.first}"
+
+      # Should we include analytics links? 
+      ga = ""
+      if defined? context.registers[:site].config["figures"]["analytics"]
+        if context.registers[:site].config["figures"]["analytics"]
+          ga = %Q[onclick="ga('send', 'event', { 'eventCategory': 'Figure', 'eventAction': 'View', 'eventLabel': '#{filename}'});"]
+        end
+      end
+
       downloads  = proc {
         d = []
         extensions.each do |ext|
-          d.push %Q{<a href="#{dir}/#{filename}.#{ext}">#{ext.upcase}</a>,}
+          d.push %Q{<a #{ga} href="#{dir}/#{filename}.#{ext}">#{ext.upcase}</a>,}
         end
         d.join(" ")[0..-2]
       }
 
 
       "<figure id='figure-#{@@fig_num}'>"                                +
-      "<a href='#{img_src}'><img src='#{img_src}' alt='#{caption}'></a>" +
+      "<a #{ga} href='#{img_src}'>"                                      +
+      "<img src='#{img_src}' alt='#{caption}'></a>"                      +
       "<figcaption>#{enumeration}"                                       +
       "#{caption} [#{downloads.call}]"                                   +
       "</figcaption>"                                                    +

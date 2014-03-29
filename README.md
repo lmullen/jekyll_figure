@@ -30,6 +30,13 @@ If you would like the figures to be enumerated (e.g., "Figure 1," "Figure
     figures:
       enumerate: true
 
+If you would like to add Google Analytics event tracking to the figure 
+links, then add this value to `_config.yml` (you must have Google 
+Analytics on your site, obviously):
+
+    figures:
+      analytics: true
+
 ## Usage
 
 To add a figure, use the figure tag in this form:
